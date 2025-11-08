@@ -38,6 +38,11 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          blue: "hsl(var(--accent-blue))",
+          green: "hsl(var(--accent-green))",
+          red: "hsl(var(--accent-red))",
+          purple: "hsl(var(--accent-purple))",
+          orange: "hsl(var(--accent-orange))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -46,6 +51,16 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        brand: {
+          yellow: "hsl(var(--brand-yellow))",
+          "yellow-light": "hsl(var(--brand-yellow-light))",
+          "yellow-dark": "hsl(var(--brand-yellow-dark))",
+          dark: "hsl(var(--brand-dark))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -62,6 +77,23 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "var(--radius-xl)",
+        "2xl": "var(--radius-lg)",
+      },
+      spacing: {
+        'atoms': 'var(--spacing-atoms)',
+        'molecules': 'var(--spacing-molecules)',
+        'organisms': 'var(--spacing-organisms)',
+        'large-cards': 'var(--spacing-large-cards)',
+      },
+      boxShadow: {
+        'sm': 'var(--shadow-sm)',
+        'md': 'var(--shadow-md)',
+        'card': 'var(--shadow-card)',
+        'lg': 'var(--shadow-lg)',
+      },
+      fontFamily: {
+        system: 'var(--font-system)',
       },
       keyframes: {
         "accordion-down": {

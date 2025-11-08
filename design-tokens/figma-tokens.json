@@ -1,0 +1,285 @@
+{
+  "$schema": "https://schemas.tokens.studio/1.0.0/schema.json",
+  "name": "V14 Design System",
+  "version": "14.0.0",
+  "colors": {
+    "brand": {
+      "primary": {
+        "value": "#FFCC00",
+        "type": "color",
+        "description": "Primary brand color - Golden yellow"
+      },
+      "primary-light": {
+        "value": "#FFD633",
+        "type": "color",
+        "description": "Lighter variant of primary"
+      },
+      "primary-dark": {
+        "value": "#CCA300",
+        "type": "color",
+        "description": "Darker variant of primary"
+      },
+      "dark": {
+        "value": "#141414",
+        "type": "color",
+        "description": "Brand dark - text on yellow surfaces"
+      }
+    },
+    "accent": {
+      "blue": {
+        "value": "#4A90E2",
+        "type": "color",
+        "description": "Sky blue accent"
+      },
+      "green": {
+        "value": "#34A853",
+        "type": "color",
+        "description": "Success green"
+      },
+      "red": {
+        "value": "#EA4335",
+        "type": "color",
+        "description": "Error red"
+      },
+      "purple": {
+        "value": "#A855F7",
+        "type": "color",
+        "description": "Purple accent"
+      },
+      "orange": {
+        "value": "#FF6B35",
+        "type": "color",
+        "description": "Orange accent"
+      }
+    },
+    "neutral": {
+      "background": {
+        "value": "#FAFAFA",
+        "type": "color",
+        "description": "Page background"
+      },
+      "foreground": {
+        "value": "#1A1A1A",
+        "type": "color",
+        "description": "Primary text color"
+      },
+      "card": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "description": "Card background (use with 80% opacity)"
+      },
+      "border": {
+        "value": "#E3E3E3",
+        "type": "color",
+        "description": "Border color (use with 30% opacity)"
+      },
+      "muted": {
+        "value": "#EDEDED",
+        "type": "color",
+        "description": "Muted background for hover states"
+      },
+      "muted-foreground": {
+        "value": "#737373",
+        "type": "color",
+        "description": "Secondary text color"
+      }
+    }
+  },
+  "spacing": {
+    "atoms": {
+      "value": "16",
+      "type": "spacing",
+      "unit": "px"
+    },
+    "molecules": {
+      "value": "20",
+      "type": "spacing",
+      "unit": "px"
+    },
+    "organisms": {
+      "value": "24",
+      "type": "spacing",
+      "unit": "px"
+    },
+    "large-cards": {
+      "value": "28",
+      "type": "spacing",
+      "unit": "px"
+    },
+    "gap-tight": {
+      "value": "8",
+      "type": "spacing",
+      "unit": "px"
+    },
+    "gap-normal": {
+      "value": "12",
+      "type": "spacing",
+      "unit": "px"
+    },
+    "gap-comfortable": {
+      "value": "16",
+      "type": "spacing",
+      "unit": "px"
+    },
+    "gap-loose": {
+      "value": "24",
+      "type": "spacing",
+      "unit": "px"
+    }
+  },
+  "typography": {
+    "fontSizes": {
+      "display": {
+        "value": "40",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "h1": {
+        "value": "32",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "h2": {
+        "value": "24",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "h3": {
+        "value": "18",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "h4": {
+        "value": "16",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "body-large": {
+        "value": "15",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "body": {
+        "value": "14",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "body-small": {
+        "value": "12",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "caption": {
+        "value": "11",
+        "type": "fontSize",
+        "unit": "px"
+      },
+      "micro": {
+        "value": "10",
+        "type": "fontSize",
+        "unit": "px"
+      }
+    },
+    "fontWeights": {
+      "normal": {
+        "value": "400",
+        "type": "fontWeight"
+      },
+      "medium": {
+        "value": "500",
+        "type": "fontWeight"
+      },
+      "semibold": {
+        "value": "600",
+        "type": "fontWeight"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeight"
+      }
+    },
+    "lineHeights": {
+      "tight": {
+        "value": "1.25",
+        "type": "lineHeight"
+      },
+      "normal": {
+        "value": "1.5",
+        "type": "lineHeight"
+      },
+      "comfortable": {
+        "value": "1.625",
+        "type": "lineHeight"
+      }
+    }
+  },
+  "borderRadius": {
+    "sm": {
+      "value": "12",
+      "type": "borderRadius",
+      "unit": "px"
+    },
+    "md": {
+      "value": "16",
+      "type": "borderRadius",
+      "unit": "px"
+    },
+    "lg": {
+      "value": "20",
+      "type": "borderRadius",
+      "unit": "px"
+    },
+    "xl": {
+      "value": "24",
+      "type": "borderRadius",
+      "unit": "px"
+    },
+    "full": {
+      "value": "9999",
+      "type": "borderRadius",
+      "unit": "px"
+    }
+  },
+  "effects": {
+    "shadow-sm": {
+      "value": {
+        "x": "0",
+        "y": "1",
+        "blur": "2",
+        "spread": "0",
+        "color": "rgba(0, 0, 0, 0.05)"
+      },
+      "type": "boxShadow"
+    },
+    "shadow-md": {
+      "value": {
+        "x": "0",
+        "y": "4",
+        "blur": "6",
+        "spread": "-1",
+        "color": "rgba(0, 0, 0, 0.1)"
+      },
+      "type": "boxShadow"
+    },
+    "shadow-card": {
+      "value": {
+        "x": "0",
+        "y": "10",
+        "blur": "15",
+        "spread": "-3",
+        "color": "rgba(0, 0, 0, 0.1)"
+      },
+      "type": "boxShadow"
+    },
+    "shadow-lg": {
+      "value": {
+        "x": "0",
+        "y": "20",
+        "blur": "25",
+        "spread": "-5",
+        "color": "rgba(0, 0, 0, 0.1)"
+      },
+      "type": "boxShadow"
+    }
+  }
+}
