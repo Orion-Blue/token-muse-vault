@@ -61,15 +61,15 @@ npm run preview
 
 ```
 v14-design-system/
-├── design-tokens/           # Design token files
-│   ├── tokens.json         # Complete token library
-│   ├── figma-tokens.json   # Figma-compatible format
-│   └── README.md           # Token documentation
+├── tokens/                  # 🎨 Design Tokens (Tokens Studio format)
+│   ├── $tokens.json        # Main token file for GitHub sync
+│   └── README.md           # Setup guide for Figma integration
 │
-├── docs/                    # Documentation
+├── docs/                    # 📚 Documentation
 │   ├── DESIGN_SYSTEM.md    # Complete design system docs
-│   ├── FIGMA_IMPORT_GUIDE.md  # Figma integration guide
-│   └── [other docs]
+│   ├── FIGMA_TOKENS_COMPLETE_GUIDE.md  # Full Figma setup guide
+│   ├── GITHUB_SETUP_GUIDE.md           # Git & GitHub walkthrough
+│   └── FIGMA_TOKENS_SETUP.md           # Quick Figma setup
 │
 ├── src/
 │   ├── components/         # React components
@@ -175,48 +175,57 @@ function MyComponent() {
 
 ### Available Token Files
 
-1. **`design-tokens/tokens.json`**
-   - Complete token library
-   - Includes descriptions and types
-   - Use for documentation reference
+**Primary Token File** (for Figma Tokens Studio GitHub Sync)
+- **`tokens/$tokens.json`** - Complete token library in Tokens Studio format
+  - Optimized for GitHub synchronization
+  - Direct import into Figma Tokens Studio plugin
+  - Includes primitives, semantic tokens, and component tokens
 
-2. **`design-tokens/figma-tokens.json`**
-   - Formatted for Figma Tokens Studio plugin
-   - Compatible with Figma free version
-   - Ready for import
-
-3. **`src/index.css`**
-   - CSS custom properties
-   - Native browser implementation
-   - Runtime theme switching ready
+**Implementation Files**
+- **`src/index.css`** - CSS custom properties
+  - Native browser implementation
+  - Runtime theme switching ready
 
 ### Token Categories
 
-- ✅ Colors (brand, accent, neutral, semantic)
-- ✅ Typography (sizes, weights, line heights)
-- ✅ Spacing (component-based hierarchy)
-- ✅ Shadows (elevation levels)
-- ✅ Border Radius (corner treatments)
-- ✅ Transitions (interaction timing)
+- ✅ **Colors** - Full primitive scales (50-950) + semantic tokens (light/dark)
+- ✅ **Typography** - Complete font scales, weights, line heights
+- ✅ **Spacing** - 0-24 scale + semantic spacing (atoms, molecules, organisms)
+- ✅ **Shadows** - 4 elevation levels (sm, md, card, lg)
+- ✅ **Border Radius** - sm to full (8px - 9999px)
+- ✅ **Effects** - Opacity, blur, border widths
+- ✅ **Sizing** - Icons, avatars, touch targets
+- ✅ **Components** - Button, Card, Input, Badge variants
 
 ---
 
 ## 🎨 Figma Integration
 
-### Quick Import (Tokens Studio Plugin)
+### 🚀 GitHub Sync (Recommended)
+
+**Sync your Figma designs directly with this repository:**
 
 1. Install [Tokens Studio for Figma](https://www.figma.com/community/plugin/843461159747178978)
-2. Load `design-tokens/figma-tokens.json`
-3. Tokens automatically available in Figma
+2. In Tokens Studio → Settings → Sync Providers → GitHub
+3. Connect to repository: `your-username/your-repo-name`
+4. File path: `$tokens.json`
+5. Pull tokens → All designs sync automatically ✨
 
-### Manual Setup
+**Benefits:**
+- ✅ Two-way sync between Figma and code
+- ✅ Always up-to-date design tokens
+- ✅ No manual imports needed
+- ✅ Team collaboration made easy
 
-See complete guide: [docs/FIGMA_IMPORT_GUIDE.md](./docs/FIGMA_IMPORT_GUIDE.md)
+### 📥 Manual Import
 
-**Three Methods Available:**
-- Tokens Studio Plugin (automated)
-- Manual Variables (full control)
-- Copy from Live Implementation (most accurate)
+1. Copy content from `tokens/$tokens.json`
+2. In Tokens Studio → Settings → Import → JSON string
+3. Paste and import
+
+**Complete guides:**
+- [Complete Figma Tokens Guide](./docs/FIGMA_TOKENS_COMPLETE_GUIDE.md) - Full setup with examples
+- [Quick Setup Guide](./docs/FIGMA_TOKENS_SETUP.md) - Fast track guide
 
 ---
 
@@ -224,12 +233,12 @@ See complete guide: [docs/FIGMA_IMPORT_GUIDE.md](./docs/FIGMA_IMPORT_GUIDE.md)
 
 ### Getting Started Guides
 - 📖 [**GitHub Setup Guide**](./docs/GITHUB_SETUP_GUIDE.md) - Complete walkthrough from Git installation to pushing code
-- 🎨 [**Figma Tokens Setup Guide**](./docs/FIGMA_TOKENS_SETUP.md) - Step-by-step Tokens Studio integration
+- 🎨 [**Figma Tokens Complete Guide**](./docs/FIGMA_TOKENS_COMPLETE_GUIDE.md) - Full Figma Tokens Studio setup with GitHub sync
+- ⚡ [**Quick Figma Setup**](./docs/FIGMA_TOKENS_SETUP.md) - Fast track Tokens Studio integration
 
 ### Design System
 - [Design System Overview](./docs/DESIGN_SYSTEM.md) - Complete design system documentation
-- [Figma Import Guide](./docs/FIGMA_IMPORT_GUIDE.md) - All methods for Figma integration
-- [Design Token Reference](./design-tokens/README.md) - Token usage and formats
+- [Design Token Reference](./tokens/README.md) - Token usage, GitHub sync, and troubleshooting
 - [Figma-to-Code Workflow](./docs/FIGMA_TO_CODE_WORKFLOW.md) - Sync strategies
 
 ---
@@ -283,7 +292,7 @@ MIT License - see [LICENSE](./LICENSE) file for details
 ## 🔗 Links
 
 - **Documentation**: [docs/](./docs/)
-- **Design Tokens**: [design-tokens/](./design-tokens/)
+- **Design Tokens**: [tokens/](./tokens/) ← Use this for Figma GitHub sync
 - **Live Demo**: [Your deployment URL]
 - **Figma File**: [Your Figma link]
 
