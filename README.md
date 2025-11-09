@@ -222,11 +222,15 @@ See complete guide: [docs/FIGMA_IMPORT_GUIDE.md](./docs/FIGMA_IMPORT_GUIDE.md)
 
 ## 📚 Documentation
 
-| Document | Description |
-|----------|-------------|
-| [DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) | Complete design system documentation |
-| [FIGMA_IMPORT_GUIDE.md](./docs/FIGMA_IMPORT_GUIDE.md) | Import tokens to Figma (free version compatible) |
-| [Design Tokens README](./design-tokens/README.md) | Token usage and integration guide |
+### Getting Started Guides
+- 📖 [**GitHub Setup Guide**](./docs/GITHUB_SETUP_GUIDE.md) - Complete walkthrough from Git installation to pushing code
+- 🎨 [**Figma Tokens Setup Guide**](./docs/FIGMA_TOKENS_SETUP.md) - Step-by-step Tokens Studio integration
+
+### Design System
+- [Design System Overview](./docs/DESIGN_SYSTEM.md) - Complete design system documentation
+- [Figma Import Guide](./docs/FIGMA_IMPORT_GUIDE.md) - All methods for Figma integration
+- [Design Token Reference](./design-tokens/README.md) - Token usage and formats
+- [Figma-to-Code Workflow](./docs/FIGMA_TO_CODE_WORKFLOW.md) - Sync strategies
 
 ---
 
