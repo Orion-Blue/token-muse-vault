@@ -1,10 +1,44 @@
 # Design Tokens
 
-Complete V14 Design System tokens for Figma Tokens Studio.
+This directory contains the design tokens for the project in a format compatible with Figma Tokens Studio plugin.
 
-## 📁 Files in This Directory
+## Token Structure
 
-- **$tokens.json** - Complete design system (primitives, semantic, components)
+The tokens are organized in `$tokens.json` with a scalable three-layer architecture:
+
+### 1. **Core** - Primitive Design Tokens
+Foundation layer containing raw values that never reference other tokens:
+- **color** - Complete color palettes (neutral, brand, blue, green, red, purple, orange, white, black)
+- **typography** - Font families, sizes, weights, line heights, letter spacing
+- **spacing** - Spacing scale from 0 to 24 (0px to 96px)
+- **borderRadius** - Border radius values (sm to full)
+- **borderWidth** - Border width options (thin, standard)
+- **sizing** - Component sizing scale (xs to xl)
+
+### 2. **Semantic** - Theme Tokens
+Theme-specific tokens that reference core tokens and provide semantic meaning:
+- **semantic/light** - Light theme tokens organized by purpose:
+  - `surface` - Background, foreground, card, popover surfaces
+  - `interactive` - Primary, secondary, accent colors
+  - `feedback` - Destructive, success states
+  - `ui` - Muted, border, input, ring elements
+  
+- **semantic/dark** - Dark theme tokens with same structure as light
+
+### 3. **Component** - Component-Specific Tokens
+Tokens tailored for specific components, referencing core and semantic tokens:
+- **button** - Padding, height, fontSize by size (sm, md, lg)
+- **card** - Padding, borderRadius, shadow
+- **input** - Height, padding, borderRadius
+
+## Benefits of This Organization
+
+- **Maintainability** - Changes to core tokens automatically propagate to all themes
+- **Scalability** - Easy to add new themes or component tokens
+- **Consistency** - Semantic tokens ensure consistent color/spacing usage
+- **Flexibility** - Switch themes by changing active token sets
+- **Component Library Ready** - Component tokens map directly to UI components
+- **Theme Independence** - Core tokens stay constant across all themes
 
 ## 🚀 Three Ways to Import to Figma
 
@@ -51,123 +85,6 @@ Complete V14 Design System tokens for Figma Tokens Studio.
 
 ---
 
-## 📦 What's Included
-
-### Token Structure
-
-```
-$tokens.json                    ← Main token file (Tokens Studio format)
-│
-├── primitives/                 ← Foundation tokens
-│   ├── colors                 → Complete color scales (50-950)
-│   ├── typography             → Font families, sizes, weights
-│   ├── spacing                → Spacing scale (0-24 + semantic)
-│   ├── effects                → Shadows, borders, blur, opacity
-│   └── sizing                 → Icons, avatars, touch targets
-│
-├── semantic/                   ← Theme tokens
-│   ├── light                  → Light mode semantic colors
-│   └── dark                   → Dark mode semantic colors
-│
-└── components/                 ← Component-specific tokens
-    ├── button                 → Button variants & sizes
-    ├── card                   → Card styling
-    ├── input                  → Input fields
-    └── badge                  → Badge components
-```
-
----
-
-## 🎨 Token Categories
-
-### Primitives (Foundation)
-
-**Colors** - Complete scales (50-950) for:
-- Neutral (grays)
-- Brand (golden yellow)
-- Blue, Green, Red, Purple, Orange
-- White & Black
-
-**Typography**
-- Font Families: System stack
-- Font Sizes: 10px - 40px (10 levels)
-- Font Weights: Normal (400) - Bold (700)
-- Line Heights: Tight to Relaxed
-- Letter Spacing: Tighter to Wide
-
-**Spacing**
-- Scale: 0, 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 64, 80, 96px
-- Semantic: atoms (16px), molecules (20px), organisms (24px)
-- Gaps: tight, normal, comfortable, loose, extra-loose
-
-**Effects**
-- Shadows: sm, md, card, lg
-- Border Radius: sm (8px) to full (9999px)
-- Border Width: thin (1px), standard (2px)
-- Opacity: card, navigation, overlay, hover, disabled
-- Blur: nav, overlay
-
-**Sizing**
-- Touch Targets: 44px minimum, 48px comfortable
-- Avatars: sm (36px) to xl (80px)
-- Icons: sm (18px) to xl (32px)
-- Icon Buttons: sm, md, lg
-
-### Semantic (Theme-Aware)
-
-**Light Mode**
-- background, foreground
-- card, card-foreground
-- primary, primary-foreground
-- secondary, secondary-foreground
-- muted, muted-foreground
-- accent, destructive, success
-- border, input, ring
-
-**Dark Mode**
-- Same structure, different color references
-- Optimized for dark backgrounds
-
-### Components (UI Elements)
-
-**Button**
-- Variants: primary, secondary, destructive, ghost
-- Sizes: sm, md, lg
-- States: default, hover
-
-**Card**
-- Background, foreground, border
-- Padding, border radius, shadow
-
-**Input**
-- Background, border, focus state
-- Placeholder color
-- Height, padding, border radius
-
-**Badge**
-- Variants: default, secondary, success, destructive
-- Padding, border radius
-
----
-
-## 🔄 Syncing Workflow
-
-### From GitHub → Figma
-
-1. Update `$tokens.json` in this repo
-2. Commit and push to GitHub
-3. In Figma Tokens Studio → Click "Pull from GitHub"
-4. All designs using tokens update automatically ✨
-
-### From Figma → GitHub
-
-1. Edit tokens in Tokens Studio
-2. Click "Push to GitHub"
-3. Tokens are committed to this repo
-4. Code can consume updated tokens
-
----
-
 ## 🎯 Using Tokens in Figma
 
 ### Applying Color Tokens
@@ -177,99 +94,113 @@ $tokens.json                    ← Main token file (Tokens Studio format)
 3. Click "Inspect" tab
 4. Find Fill/Stroke property
 5. Choose token:
-   - **Primitives**: `primitives.colors.brand.500`
-   - **Semantic**: `semantic.light.primary`
-   - **Component**: `components.button.primary.bg`
+   - **Core (static colors)**: `core.color.brand.500`
+   - **Semantic (themed)**: `semantic.light.interactive.primary` or `semantic.dark.interactive.primary`
+   - **Component**: `component.button.primary.bg` (if defined)
 
 ### Applying Typography
 
 1. Select text element
 2. In Tokens Studio:
-   - Font Size: `primitives.typography.fontSize.h1`
-   - Font Weight: `primitives.typography.fontWeight.semibold`
-   - Line Height: `primitives.typography.lineHeight.tight`
+   - Font Family: `core.typography.fontFamily.system`
+   - Font Size: `core.typography.fontSize.h1`
+   - Font Weight: `core.typography.fontWeight.semibold`
+   - Line Height: `core.typography.lineHeight.tight`
 
 ### Applying Spacing
 
 1. Select frame/component
 2. Apply spacing tokens:
-   - Padding: `primitives.spacing.molecules`
-   - Gap: `primitives.spacing.gap-comfortable`
+   - Padding: `core.spacing.4` (16px)
+   - Gap: `core.spacing.6` (24px)
+   - Component-specific: `component.card.padding`
 
 ### Applying Effects
 
 1. Select element
 2. Apply effect tokens:
-   - Shadow: `primitives.effects.shadow.card`
-   - Border Radius: `primitives.effects.borderRadius.xl`
+   - Shadow: `component.card.shadow`
+   - Border Radius: `core.borderRadius.xl`
+   - Component-specific: `component.button.height.md`
 
 ---
 
 ## 🌓 Dark Mode Setup
 
-### Option 1: Token Sets (Recommended)
+### Option 1: Themes (Recommended)
 
-1. In Tokens Studio, create two modes:
-   - **Light Mode**: Enable `semantic/light`
-   - **Dark Mode**: Enable `semantic/dark`
-2. Plugin automatically swaps semantic tokens
+1. In Tokens Studio, use the **Themes** dropdown
+2. Select from pre-configured themes:
+   - **Light Theme**: Enables `core` + `semantic/light` + `component`
+   - **Dark Theme**: Enables `core` + `semantic/dark` + `component`
+3. Plugin automatically swaps semantic tokens while keeping core tokens constant
 
 ### Option 2: Figma Variables
 
 1. Create Color Collection: "Semantic Colors"
 2. Add modes: Light & Dark
-3. Map semantic tokens to primitives per mode
+3. Map semantic tokens to different core values per mode:
+   - Light mode: `semantic.light.surface.background` → `core.color.neutral.50`
+   - Dark mode: `semantic.dark.surface.background` → `core.color.neutral.950`
 
 ---
 
 ## 📝 Best Practices
 
-### 1. Use Semantic Tokens for UI
-✅ `semantic.light.primary` (theme-aware)  
-❌ `primitives.colors.brand.500` (hardcoded)
+### 1. Use Semantic Tokens for Themed UI
+✅ `semantic.light.interactive.primary` (theme-aware, switches with themes)  
+❌ `core.color.brand.500` (static, never changes)
 
-### 2. Use Component Tokens for Variants
-✅ `components.button.primary.bg`  
-✅ `components.card.shadow`
+### 2. Use Core Tokens for Static Values
+✅ `core.spacing.4` (always 16px regardless of theme)  
+✅ `core.typography.fontSize.h1` (always 32px)
 
-### 3. Keep Primitives Intact
-- Never delete primitive tokens
-- They're the foundation for semantic/component tokens
+### 3. Use Component Tokens for Components
+✅ `component.button.padding.md`  
+✅ `component.card.shadow`
 
-### 4. Document Custom Tokens
-- Add descriptions in JSON
-- Use consistent naming
+### 4. Follow the Token Hierarchy
+- **Core** → Never references other tokens (primitives)
+- **Semantic** → Always references core tokens only
+- **Component** → References core or semantic tokens
 
-### 5. Test Both Themes
-- Always verify light AND dark mode
-- Use semantic tokens for automatic theme switching
+### 5. Keep Core Tokens Stable
+- Core tokens are the foundation - changes affect everything
+- Add new tokens rather than modifying existing ones
+- Document any breaking changes
+
+### 6. Test Both Themes
+- Always verify designs in light AND dark themes
+- Ensure semantic tokens provide proper contrast in both modes
 
 ---
 
 ## 🐛 Troubleshooting
 
 **"Token references are broken"**
-- Ensure all token sets are enabled (toggle on in Tokens Studio)
-- Check that primitives load before semantic tokens
+- Ensure all token sets are enabled (core, semantic/light or semantic/dark, component)
+- Check that core tokens load before semantic tokens
 
 **"Colors look wrong"**
-- Verify correct mode is active (light vs dark)
+- Verify correct theme is active (Light Theme vs Dark Theme)
 - Check semantic token sets are enabled
 
 **"GitHub sync not working"**
 - Verify repository name and branch
-- Check file path is `$tokens.json` (with `$` prefix)
+- Check file path is `tokens/$tokens.json` (with `$` prefix)
 - Re-authenticate GitHub connection
 
 **"Can't see all tokens"**
 - Scroll down in token sets list
 - Verify JSON import was successful
+- Check all token sets are enabled
 
 ---
 
 ## 🔗 Related Documentation
 
 - **[Token Studio Web Upload Guide](../docs/TOKEN_STUDIO_WEB_GUIDE.md)** ← START HERE
+- [Design System Architecture](../docs/DESIGN_SYSTEM_ARCHITECTURE.md) ← Understanding the three-layer structure
 - [Complete Figma Tokens Reference](../docs/FIGMA_TOKENS_COMPLETE_GUIDE.md)
 - [Figma Setup Guide](../docs/FIGMA_TOKENS_SETUP.md)
 - [Design System Docs](../docs/DESIGN_SYSTEM.md)
@@ -278,13 +209,15 @@ $tokens.json                    ← Main token file (Tokens Studio format)
 
 ## 📊 Token Statistics
 
-- **Total Tokens**: 200+
-- **Color Primitives**: 70+ (7 scales × 11 shades each)
-- **Semantic Tokens**: 40+ (light + dark modes)
-- **Component Tokens**: 30+ (4 components)
-- **Typography Tokens**: 25+
-- **Spacing Tokens**: 20+
-- **Effect Tokens**: 15+
+- **Total Tokens**: 150+
+- **Core Tokens**: 100+
+  - Color primitives: 70+ (7 scales × 11 shades each + white/black)
+  - Typography: 25+ (families, sizes, weights, line heights, letter spacing)
+  - Spacing: 14 values (0px to 96px)
+  - Border radius: 7 values
+  - Sizing: 5 values
+- **Semantic Tokens**: 36+ (18 per theme × 2 themes)
+- **Component Tokens**: 10+ (button, card, input variants)
 
 ---
 
@@ -293,8 +226,9 @@ $tokens.json                    ← Main token file (Tokens Studio format)
 **Format**: Tokens Studio for Figma JSON  
 **Schema Version**: Compatible with Tokens Studio v2+  
 **File Naming**: `$tokens.json` (required for GitHub sync)  
-**Token References**: Full support (e.g., `{primitives.colors.brand.500}`)
+**Token References**: Full support (e.g., `{core.color.brand.500}`)  
+**Architecture**: Three-layer system (Core → Semantic → Component)
 
 ---
 
-**Need help?** See [Tokens Studio Documentation](https://docs.tokens.studio/) or check our [troubleshooting guide](../docs/FIGMA_TOKENS_COMPLETE_GUIDE.md#-troubleshooting).
+**Need help?** See [Token Studio Documentation](https://docs.tokens.studio/) or check our [architecture guide](../docs/DESIGN_SYSTEM_ARCHITECTURE.md).

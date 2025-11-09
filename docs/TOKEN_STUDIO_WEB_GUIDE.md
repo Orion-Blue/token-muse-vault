@@ -6,7 +6,10 @@ Complete guide to uploading your design system to Token Studio Web and syncing t
 
 All files are located in the `tokens/` directory:
 
-1. **$tokens.json** - Complete design system tokens (primitives, semantic, components)
+1. **$tokens.json** - Complete design system with three-layer architecture:
+   - **core** - Primitive tokens (colors, typography, spacing, sizing, borders)
+   - **semantic** - Theme tokens organized by light/dark modes
+   - **component** - Component-specific tokens
 
 ## 🚀 Step-by-Step Process
 
@@ -40,15 +43,18 @@ All files are located in the `tokens/` directory:
 6. Confirm the upload
 
 **What gets uploaded:**
-- ✅ All color primitives (neutral, brand, blue, green, red, purple, orange)
-- ✅ Typography tokens (sizes, weights, line heights, spacing)
-- ✅ Spacing scale (0-24)
-- ✅ Border radius tokens (sm to full)
-- ✅ Sizing tokens (xs to xl)
-- ✅ Semantic tokens for light mode
-- ✅ Semantic tokens for dark mode
-- ✅ Component tokens (button, card, input, badge)
-- ✅ Theme configurations
+- ✅ Core primitives:
+  - All color primitives (neutral, brand, blue, green, red, purple, orange)
+  - Typography tokens (sizes, weights, line heights, letter spacing)
+  - Spacing scale (0-24: 0px to 96px)
+  - Border radius tokens (sm to full)
+  - Border widths (thin, standard)
+  - Sizing tokens (xs to xl)
+- ✅ Semantic tokens:
+  - Light theme (surface, interactive, feedback, ui)
+  - Dark theme (surface, interactive, feedback, ui)
+- ✅ Component tokens (button, card, input)
+- ✅ Theme configurations (Light Theme, Dark Theme)
 
 ---
 
@@ -75,18 +81,20 @@ All files are located in the `tokens/` directory:
 ### Step 5: Apply Tokens in Figma
 
 #### View Your Tokens
-In the Tokens Studio plugin, you'll see token sets:
-- **global** - All primitive tokens
-- **light** - Light mode semantic tokens
-- **dark** - Dark mode semantic tokens
+In the Tokens Studio plugin, you'll see organized token sets:
+- **core** - Primitive tokens (color, typography, spacing, etc.)
+- **semantic/light** - Light theme semantic tokens
+- **semantic/dark** - Dark theme semantic tokens
+- **component** - Component-specific tokens
 
 #### Create Figma Variables (Recommended Method)
 
 1. In Tokens Studio plugin, click **"Create Variables"**
 2. Select which token sets to convert:
-   - ✅ global
-   - ✅ light
-   - ✅ dark
+   - ✅ core
+   - ✅ semantic/light
+   - ✅ semantic/dark
+   - ✅ component
 3. Click **"Create"**
 4. Figma will create native variables in **Variables panel**
 
@@ -113,20 +121,19 @@ This creates:
 1. Open **Variables** panel (right sidebar)
 2. Find the color collection created from tokens
 3. Click **"+"** next to modes to add **"Dark"** mode
-4. For each variable, set:
-   - **Light mode** → value from `light` tokens
-   - **Dark mode** → value from `dark` tokens
+4. For each semantic variable, set:
+   - **Light mode** → value from `semantic.light.*` tokens
+   - **Dark mode** → value from `semantic.dark.*` tokens
+5. Core tokens stay constant across both modes
 
 **Method 2: Using Token Sets**
-1. In Tokens Studio plugin
-2. Click **"Themes"** icon
-3. Create **"Light"** theme:
-   - Enable: global + light
-   - Disable: dark
-4. Create **"Dark"** theme:
-   - Enable: global + dark
-   - Disable: light
-5. Switch between themes using theme selector
+1. In Tokens Studio plugin, go to **"Themes"** tab
+2. You'll see pre-configured themes from the token file:
+   - **Light Theme**: core + semantic/light + component
+   - **Dark Theme**: core + semantic/dark + component
+3. Select a theme from the dropdown
+4. The plugin automatically activates the correct token sets
+5. Switch themes to see semantic tokens update while core stays constant
 
 ---
 
@@ -136,23 +143,32 @@ This creates:
 1. Select any element (rectangle, text, frame)
 2. In Tokens Studio plugin, click **"Inspect"** tab
 3. Click on properties you want to apply tokens to
-4. Search and select appropriate token:
-   - **Fill** → `semantic.light.primary` or `global.colors.brand.500`
-   - **Text** → `global.fontSize.h1`
-   - **Padding** → `global.spacing.4`
-   - **Corner Radius** → `global.borderRadius.lg`
+4. Search and select appropriate token following the hierarchy:
+   
+   **For themed colors** (change with light/dark):
+   - `semantic.light.interactive.primary` or `semantic.dark.interactive.primary`
+   - `semantic.light.surface.background` or `semantic.dark.surface.background`
+   
+   **For static colors** (never change):
+   - `core.color.brand.500`
+   - `core.color.neutral.700`
+   
+   **For component-specific styling**:
+   - `component.button.padding.md`
+   - `component.card.shadow`
 
 #### Create Components with Tokens
 **Example: Button Component**
 1. Create frame (name: "Button")
 2. Apply tokens:
-   - Fill: `{light.primary}` or component token
-   - Padding: `{global.spacing.4}`
-   - Corner radius: `{global.borderRadius.md}`
+   - Fill: `{semantic.light.interactive.primary}` (themed) or `{core.color.brand.500}` (static)
+   - Padding: `{component.button.padding.md}` or `{core.spacing.4}`
+   - Corner radius: `{component.button.borderRadius}` or `{core.borderRadius.md}`
+   - Height: `{component.button.height.md}`
 3. Add text layer:
-   - Font size: `{global.fontSize.body}`
-   - Color: `{light.primary-foreground}`
-4. Create variants for different states
+   - Font size: `{component.button.fontSize.md}` or `{core.typography.fontSize.body}`
+   - Color: `{semantic.light.interactive.primary-foreground}`
+4. Create variants for different states and sizes
 
 ---
 
@@ -174,36 +190,38 @@ This creates:
 
 ## 📊 Token Organization in Figma
 
-### Color Primitives
+### Core Primitives
 ```
-global.colors.neutral.50 → #FAFAFA
-global.colors.brand.500 → #FFCC00 (primary brand)
-global.colors.blue.500 → #4A90E2
-global.colors.green.500 → #34A853
-global.colors.red.500 → #EA4335
-```
-
-### Semantic Tokens
-```
-light.background → global.colors.neutral.50
-light.foreground → global.colors.neutral.900
-light.primary → global.colors.brand.500
-light.primary-foreground → global.colors.neutral.950
+core.color.neutral.50 → #FAFAFA
+core.color.brand.500 → #FFCC00 (primary brand)
+core.color.blue.500 → #4A90E2
+core.typography.fontSize.h1 → 32px
+core.spacing.4 → 16px
+core.borderRadius.md → 12px
 ```
 
-### Typography
+### Semantic Tokens (Light Theme)
 ```
-global.fontSize.h1 → 32px
-global.fontSize.body → 14px
-global.fontWeight.semibold → 600
-global.lineHeight.normal → 150%
+semantic.light.surface.background → {core.color.neutral.50}
+semantic.light.surface.foreground → {core.color.neutral.900}
+semantic.light.interactive.primary → {core.color.brand.500}
+semantic.light.interactive.primary-foreground → {core.color.neutral.950}
 ```
 
-### Spacing
+### Semantic Tokens (Dark Theme)
 ```
-global.spacing.4 → 16px
-global.spacing.6 → 24px
-global.spacing.8 → 32px
+semantic.dark.surface.background → {core.color.neutral.950}
+semantic.dark.surface.foreground → {core.color.neutral.50}
+semantic.dark.interactive.primary → {core.color.brand.500}
+semantic.dark.interactive.primary-foreground → {core.color.neutral.950}
+```
+
+### Component Tokens
+```
+component.button.padding.md → {core.spacing.3} {core.spacing.4}
+component.button.height.md → {core.sizing.md}
+component.card.padding → {core.spacing.6}
+component.card.borderRadius → {core.borderRadius.lg}
 ```
 
 ---
@@ -212,41 +230,45 @@ global.spacing.8 → 32px
 
 After completing setup, verify:
 
-- [ ] All color primitives appear in Figma variables
-- [ ] Light and dark mode semantic tokens are available
-- [ ] Typography tokens (size, weight, line height) are accessible
+- [ ] All core color primitives appear in Figma variables
+- [ ] Typography tokens (family, size, weight, line height, letter spacing) are accessible
 - [ ] Spacing tokens (0-24 scale) are present
-- [ ] Border radius tokens (sm to full) are available
-- [ ] Component tokens for button, card, input, badge exist
-- [ ] Can switch between light/dark themes
+- [ ] Border radius and width tokens are available
+- [ ] Sizing tokens (xs-xl) exist
+- [ ] Light theme semantic tokens are available (surface, interactive, feedback, ui)
+- [ ] Dark theme semantic tokens are available (same structure)
+- [ ] Component tokens for button, card, input are accessible
+- [ ] Can switch between Light Theme and Dark Theme using Themes dropdown
+- [ ] Core tokens stay constant while semantic tokens change with theme
 - [ ] Can apply tokens to elements via Inspect tab
-- [ ] Can create components using tokens
+- [ ] Can create components using the three-layer token hierarchy
 
 ---
 
 ## 🎨 Design System Included
 
-Your uploaded tokens include:
+Your uploaded tokens follow a three-layer architecture:
 
-### Primitives (global)
-- 7 complete color scales (neutral, brand, blue, green, red, purple, orange)
-- Full typography system (9 sizes, 4 weights, 4 line heights)
-- Spacing scale (13 values: 0px to 96px)
-- Border radius (7 values: 8px to 9999px)
-- Border widths (thin, standard)
-- Component sizing (xs to xl)
+### Core Layer (Primitives)
+- **Color**: 7 complete color scales (neutral, brand, blue, green, red, purple, orange) × 11 shades each + white/black
+- **Typography**: Font families, 10 font sizes, 4 weights, 4 line heights, 4 letter spacings
+- **Spacing**: 14 values (0px to 96px)
+- **Border Radius**: 7 values (8px to 9999px)
+- **Border Width**: 2 values (thin, standard)
+- **Sizing**: 5 values (xs to xl)
 
-### Semantic Tokens (light + dark)
-- Background, foreground, card, popover
-- Primary, secondary, muted, accent
-- Destructive, success
-- Border, input, ring
+### Semantic Layer (Themes)
+Organized by purpose with light and dark variants:
+- **surface** - background, foreground, card, card-foreground, popover, popover-foreground
+- **interactive** - primary, primary-foreground, secondary, secondary-foreground, accent, accent-foreground
+- **feedback** - destructive, destructive-foreground, success, success-foreground
+- **ui** - muted, muted-foreground, border, input, ring
 
-### Component Tokens
-- Button (background, text, hover, disabled)
-- Card (background, border, shadow)
-- Input (background, border, placeholder, focus)
-- Badge (background, text)
+### Component Layer (UI Elements)
+Component-specific tokens:
+- **button** - padding (sm/md/lg), height (sm/md/lg), fontSize (sm/md/lg)
+- **card** - padding, borderRadius, shadow
+- **input** - height, padding, borderRadius
 
 ---
 
@@ -255,7 +277,7 @@ Your uploaded tokens include:
 **Tokens not appearing in Figma:**
 - Ensure Token Studio Web sync is connected
 - Click "Pull changes" in plugin
-- Check that token sets are enabled
+- Check that all token sets are enabled
 
 **Only colors showing, no typography/spacing:**
 - Verify `$tokens.json` has all token types
@@ -267,10 +289,16 @@ Your uploaded tokens include:
 - Ensure Figma file has edit permissions
 - Try creating styles instead as alternative
 
-**Dark mode not working:**
-- Verify both light and dark token sets uploaded
-- Check theme configuration in plugin
-- Ensure variables have both modes set
+**Dark mode not switching correctly:**
+- Verify theme configuration in Tokens Studio includes correct token sets
+- For Light Theme: core + semantic/light + component should be enabled
+- For Dark Theme: core + semantic/dark + component should be enabled
+- Ensure semantic tokens reference core tokens (not hardcoded values)
+
+**Component tokens not working:**
+- Check that component token set is enabled
+- Verify component tokens reference core or semantic tokens correctly
+- Re-sync from Token Studio Web if needed
 
 ---
 
@@ -279,6 +307,7 @@ Your uploaded tokens include:
 - [Token Studio Documentation](https://docs.tokens.studio/)
 - [Figma Variables Guide](https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma)
 - [Design Tokens Format](https://design-tokens.github.io/community-group/format/)
+- [Design System Architecture](./DESIGN_SYSTEM_ARCHITECTURE.md) - Understanding the three-layer token structure
 
 ---
 
@@ -289,8 +318,11 @@ Your uploaded tokens include:
 3. ✅ Upload tokens to Token Studio Web
 4. ✅ Install Tokens Studio Figma plugin
 5. ✅ Connect plugin to Token Studio Web
-6. ✅ Create Figma variables from tokens
-7. ✅ Set up light/dark modes
-8. ✅ Start designing with tokens!
+6. ✅ Create Figma variables from all token sets (core, semantic, component)
+7. ✅ Set up Light Theme and Dark Theme using Themes dropdown
+8. ✅ Understand the three-layer token hierarchy
+9. ✅ Start designing with tokens following best practices!
+
+**Remember**: Always use semantic tokens for themed elements and core tokens for static values.
 
 **Happy Designing! 🎨**
