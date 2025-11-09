@@ -1,37 +1,53 @@
-# Design Tokens - Tokens Studio GitHub Sync
+# Design Tokens
 
-This directory contains the complete V14 Design System tokens in the **Tokens Studio for Figma** format, optimized for GitHub synchronization.
+Complete V14 Design System tokens for Figma Tokens Studio.
 
-## 🚀 Quick Start - Connect to Figma
+## 📁 Files in This Directory
 
-### Method 1: GitHub Sync (Recommended)
+- **$tokens.json** - Complete design system (primitives, semantic, components)
+
+## 🚀 Three Ways to Import to Figma
+
+### ⭐ Method 1: Token Studio Web (Recommended)
+
+**Complete guide:** [docs/TOKEN_STUDIO_WEB_GUIDE.md](../docs/TOKEN_STUDIO_WEB_GUIDE.md)
+
+**Quick steps:**
+1. Download `$tokens.json` from this folder
+2. Upload to [Token Studio Web](https://tokens.studio/)
+3. Connect Figma plugin to Token Studio Web
+4. Create variables & styles automatically
+
+**Why this method?**
+- ✅ Cloud sync - updates automatically
+- ✅ Team collaboration
+- ✅ Version history
+- ✅ No GitHub needed
+
+---
+
+### Method 2: GitHub Sync (For Developers)
 
 1. **Install Tokens Studio Plugin** in Figma
-   - Open Figma
-   - Press `Shift + I` → Search "Tokens Studio for Figma" → Install
+   - Open Figma → Plugins → "Tokens Studio for Figma"
 
 2. **Connect to GitHub**
-   - In Figma, run Tokens Studio plugin
-   - Click Settings (⚙️) → "Sync Providers"
-   - Select "GitHub"
-   - Authorize the plugin to access your GitHub
+   - In plugin: Settings (⚙️) → Sync Providers → GitHub
+   - Authorize
 
 3. **Connect This Repository**
    - Repository: `your-username/your-repo-name`
    - Branch: `main`
-   - File Path: `$tokens.json`
-   - Click "Add credentials" and authenticate
-
-4. **Pull Tokens**
+   - File Path: `tokens/$tokens.json`
    - Click "Pull from GitHub"
-   - All tokens will be imported automatically
-   - Enable the token sets you want to use
 
-### Method 2: Manual JSON Import
+---
 
-1. Copy the entire content of `$tokens.json`
+### Method 3: Manual Import
+
+1. Copy content of `$tokens.json`
 2. In Tokens Studio → Settings → Import → "JSON string"
-3. Paste and click "Import"
+3. Paste and import
 
 ---
 
@@ -253,7 +269,8 @@ $tokens.json                    ← Main token file (Tokens Studio format)
 
 ## 🔗 Related Documentation
 
-- [Complete Figma Tokens Guide](../docs/FIGMA_TOKENS_COMPLETE_GUIDE.md)
+- **[Token Studio Web Upload Guide](../docs/TOKEN_STUDIO_WEB_GUIDE.md)** ← START HERE
+- [Complete Figma Tokens Reference](../docs/FIGMA_TOKENS_COMPLETE_GUIDE.md)
 - [Figma Setup Guide](../docs/FIGMA_TOKENS_SETUP.md)
 - [Design System Docs](../docs/DESIGN_SYSTEM.md)
 
